@@ -1,10 +1,13 @@
 workflows:
   version_notify:
     name: Version Notify Pipeline
-    triggers:
-      - push:
-          branches:
-            - main
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+          source: false
     scripts:
       - name: Echo Version
         script: |
