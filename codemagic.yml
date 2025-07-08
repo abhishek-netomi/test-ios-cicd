@@ -1,0 +1,26 @@
+workflows:
+  version_notify:
+    name: Version Notify Pipeline
+    triggers:
+      - push:
+          branches:
+            - main
+    scripts:
+      - name: Echo Version
+        script: |
+          VERSION=$(cat VERSION 2>/dev/null || echo "1.0.0")
+          echo "Version: $VERSION"
+          echo $VERSION > version.txt
+    artifacts:
+      - version.txt
+    notifications:
+      - slack:
+          channel: "sdk-release-updates"
+          notify_on_build_start: false
+          notify:
+            success: true
+            failure: true
+          payload: |
+            {
+              "text": "Build finished for version: $(cat version.txt)"
+            }
