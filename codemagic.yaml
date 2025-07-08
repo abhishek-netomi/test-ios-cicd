@@ -17,13 +17,13 @@ workflows:
     artifacts:
       - version.txt
     publishing:
-      - slack:
-          channel: "sdk-release-updates"
-          notify_on_build_start: false
-          notify:
-            success: true
-            failure: true
-          payload: |
-            {
-              "text": "Build finished for version: $(cat version.txt)"
-            }
+      slack:
+        channel: "sdk-release-updates"
+        notify_on_build_start: false
+        notify:
+          success: true
+          failure: true
+        payload: |
+          {
+            "text": "Build finished for version: $(cat version.txt)"
+          }
