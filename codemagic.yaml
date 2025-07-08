@@ -16,7 +16,7 @@ workflows:
           echo $VERSION > version.txt
     artifacts:
       - version.txt
-    notifications:
+    publishing:
       - slack:
           channel: "sdk-release-updates"
           notify_on_build_start: false
