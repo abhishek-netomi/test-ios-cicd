@@ -5,7 +5,7 @@ workflows:
       events:
         - push
       branch_patterns:
-        - pattern: master
+        - pattern: main
           include: true
           source: false
     scripts:
@@ -18,7 +18,7 @@ workflows:
       - version.txt
     publishing:
       slack:
-        channel: "sdk-release-updates"
+        channel: "#sdk-release-updates"
         notify_on_build_start: false
         notify:
           success: true
