@@ -23,7 +23,3 @@ workflows:
         notify:
           success: true
           failure: true
-        payload: |
-          {
-            "text": "Build finished for version: $(cat version.txt)"
-          }
